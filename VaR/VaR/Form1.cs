@@ -84,7 +84,7 @@ namespace VaR
                 {
                     sw.WriteLine(string.Format(
                         "{0};{1}",
-                        i,
+                        Math.Round((double)i /(double)nyereségekRendezve.Count(),2),
                         nyereségekRendezve[i]
                         ));
                 }
