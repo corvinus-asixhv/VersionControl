@@ -21,14 +21,14 @@ namespace week06
         public Form1()
         {
             InitializeComponent();
-            dataGridView1.DataSource = Rates;
+            //dataGridView1.DataSource = Rates;
 
             /*var xml = new XmlDocument();
             xml.LoadXml(result);*/
 
             var mnbService = new MNBArfolyamServiceSoapClient();
 
-            var request = new GetExchangeRatesRequestBody()
+            /*var request = new GetExchangeRatesRequestBody()
             {
                 currencyNames = "EUR",
                 startDate = "2020-01-01",
@@ -36,8 +36,33 @@ namespace week06
             };
             var response = mnbService.GetExchangeRates(request);
 
-            var result = response.GetExchangeRatesResult;
+            var result = response.GetExchangeRatesResult;*/
 
+        }
+        private void RefreshData()
+        {
+            if (comboBox1.SelectedItem == null)
+            {
+                return;
+            }
+            Rates.Clear();
+            string xmlstring = Consume();
+            LoadXml(xmlstring);
+            dataGridView1.DataSource = Rates;
+            Charting();
+        }
+
+        string Consume()
+        {
+
+            MNBArfolyamServiceSoapClient mnbService = new MNBArfolyamServiceSoapClient();
+            GetExchangeRatesRequestBody request = new GetExchangeRatesRequestBody();
+            request.currencyNames = comboBox1.SelectedItem.ToString(); //"EUR";
+            request.startDate = dateTimePicker1.Value.ToString("yyyy-MM-dd"); //"2020-01-01";
+            request.endDate = dateTimePicker2.Value.ToString("yyyy-MM-dd"); //"2020-06-30";
+            var response = mnbService.GetExchangeRates(request);
+            string result = response.GetExchangeRatesResult;
+            return result;
         }
 
 
