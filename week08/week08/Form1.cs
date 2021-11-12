@@ -27,7 +27,7 @@ namespace week08
             Factory = new BallFactory();
         }
 
-        private void createTimer_Tick(object sender, EventArgs e)
+        private void createTimer_Tick_1(object sender, EventArgs e)
         {
             var ball = Factory.CreateNew();
             _balls.Add(ball);
@@ -35,7 +35,7 @@ namespace week08
             mainPanel.Controls.Add(ball);
         }
 
-        private void conveyorTimer_Tick(object sender, EventArgs e)
+        private void conveyorTimer_Tick_1(object sender, EventArgs e)
         {
             var maxPosition = 0;
             foreach (var ball in _balls)
