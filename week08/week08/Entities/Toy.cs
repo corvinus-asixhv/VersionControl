@@ -9,9 +9,9 @@ using week08.Abstractions;
 
 namespace week08.Entities
 {
-    public class Ball:Toy
+    public class Toy: Abstractions.Toy
     {
-        public Ball()
+        public Toy()
         {
             AutoSize = false;
             Width = 50;
