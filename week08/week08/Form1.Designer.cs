@@ -29,13 +29,31 @@ namespace week08
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.SuspendLayout();
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.Location = new System.Drawing.Point(80, 53);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(512, 346);
+            this.mainPanel.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.mainPanel);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel mainPanel;
     }
 }
 
