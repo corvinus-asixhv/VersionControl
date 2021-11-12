@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using week08.Abstractions;
 
 namespace week08.Entities
 {
-    public class Ball:Label
+    public class Ball:Toy
     {
         public Ball()
         {
@@ -22,7 +23,7 @@ namespace week08.Entities
         {
             DrawImage(e.Graphics);
         }
-        protected void DrawImage(System.Drawing.Graphics g)
+        protected override void DrawImage(System.Drawing.Graphics g)
         {
             g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
         }
