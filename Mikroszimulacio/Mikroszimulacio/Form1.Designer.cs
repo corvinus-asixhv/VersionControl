@@ -47,6 +47,7 @@ namespace Mikroszimulacio
             this.btnBrowse.TabIndex = 0;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // btnStart
             // 
@@ -56,6 +57,7 @@ namespace Mikroszimulacio
             this.btnStart.TabIndex = 1;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // richTextBox1
             // 
@@ -68,9 +70,24 @@ namespace Mikroszimulacio
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(72, 23);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            2006,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(68, 22);
             this.numericUpDown1.TabIndex = 3;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            2006,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
@@ -111,7 +128,6 @@ namespace Mikroszimulacio
             this.Controls.Add(this.btnBrowse);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

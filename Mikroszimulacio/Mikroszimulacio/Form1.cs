@@ -16,6 +16,8 @@ namespace Mikroszimulacio
     {
         
         List<Person> Population = new List<Person>();
+        List<int> malePopulation = new List<int>();
+        List<int> femalePopulation = new List<int>();
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
 
@@ -23,12 +25,17 @@ namespace Mikroszimulacio
         public Form1()
         {
             InitializeComponent();
+            
 
+        }
+
+        private void Simulation()
+        {
             Population = GetPopulation(@"C:\Temp\nép.csv");
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
 
-            for (int year = 2005; year<=2024;year++)
+            for (int year = 2005; year <= 2024; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
@@ -43,8 +50,8 @@ namespace Mikroszimulacio
                 Console.WriteLine(
                     string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
             }
-
         }
+
         private void SimStep(int year, Person person)
         {
             if (!person.IsAlive) return;
@@ -142,9 +149,35 @@ namespace Mikroszimulacio
             return DeathProbabilities;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+       
 
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+            Population.Clear();
+            malePopulation.Clear();
+            femalePopulation.Clear();
+            Simulation();
+            Display();
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Column Separated Values (*csv) | *.csv";
+            ofd.DefaultExt = "csv";
+            ofd.AddExtension = true;
+            if (ofd.ShowDialog() != DialogResult.OK) return;
+            textBox1.Text = ofd.FileName.ToString();
+        }
+
+        public void Display()
+        {
+            var endYear = numericUpDown1.Value;
+            for (int year = 2005; year <= (int)endYear; year++)
+            {
+                richTextBox1.Text += "Szimulációs év: " + year + "\n" + "\t" + "Fiúk: " + malePopulation[year - 2005] + "\n" + "\t" + "Lányok: " + femalePopulation[year - 2005] + "\n" + "\n";
+            }
         }
     }
 }
